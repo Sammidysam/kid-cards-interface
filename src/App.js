@@ -15,7 +15,7 @@ class App extends Component {
 	render() {
 		return (
             <div className="KidCards" background-color="#D2B38C">
-                <h1 align="center">{this.state.doctors[0].patients[0].name}</h1>
+                <h1 align="center">{this.state.doctors && this.state.doctors[0].patients[0].name}</h1>
 			<CardStack cards={this.state.doctors && this.state.doctors[0].patients[0].notes} />
 			</div>
 		);
