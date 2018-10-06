@@ -9,7 +9,17 @@ class App extends Component {
     constructor() {
         super();
 
-        this.state = {};
+        this.state = {notes: [], value: ''};
+    }
+    handleChange(event) {
+        this.setState({ value: event.target.value });
+    }
+
+    handleSubmit(event) {
+        tools.index.search({ query: this.state.value }, function (error, content) {
+            if (error) { alert(error.message); }
+            this.setState({ notes: content.hits});
+        });
     }
 
     render() {
@@ -22,7 +32,7 @@ class App extends Component {
                         <button className="btn btn-outline-secondary" type="button">Analyze</button>
                     </div>
                 </div>
-                <CardStack cards={this.state.doctors && this.state.doctors[0].patients[0].notes} />
+                <CardStack cards={(this.state.notes.length >0 ? this.state.notes : (this.state.doctors && this.state.doctors[0].patients[0].notes)} />
             </div>
         );
     }
