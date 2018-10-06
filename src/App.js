@@ -16,11 +16,14 @@ class App extends Component {
 			this.setState({ notes: [] })
 		else {
 			var that = this;
-
-            tools.index.search({ query: this.state.value, distinct: true }, function (error, content) {
+tools.index.clearIndex()
+tools.firebase.database().ref('doctors/0/patients/0/notes').once('value').then(function (s) {
+    s.val() && tools.index.addObjects(s.val())
+            tools.index.search({ query: that.state.value, distinct: true }, function (error, content) {
                 if (error) { alert(error.message); }
                 that.setState({ notes: content.hits});
             });
+})
         }
         this.setState({ value: event.target.value });
     }
