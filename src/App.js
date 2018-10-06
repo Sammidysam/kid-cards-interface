@@ -27,9 +27,9 @@ class App extends Component {
             <div className="KidCards" style={{ backgroundColor: "#D2B38C" }}>
                 <h1 align="center">{this.state.doctors && this.state.doctors[0].patients[0].name}</h1>
                 <div className="input-group mb-3">
-                    <input type="text" className="form-control" placeholder="Keywords (fever, fidget, sad...)"></input>
+                    <input type="text" className="form-control" placeholder="Keywords (fever, fidget, sad...)" onChange={this.handleChange}></input>
                     <div className="input-group-append">
-                        <button className="btn btn-outline-secondary" type="button">Analyze</button>
+                        <button className="btn btn-secondary" type="button" onClick={this.handleSubmit}>Analyze</button>
                     </div>
                 </div>
                 <CardStack cards={(this.state.notes.length >0 ? this.state.notes : (this.state.doctors && this.state.doctors[0].patients[0].notes)} />
