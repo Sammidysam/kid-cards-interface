@@ -37,7 +37,7 @@ Promise.all([
     });
 
 // Get all contacts from Firebase
-database.ref('/contacts').once('value', contacts => {
+tools.database.ref('/contacts').once('value', contacts => {
     // Build an array of all records to push to Algolia
     const records = [];
     contacts.forEach(contact => {
