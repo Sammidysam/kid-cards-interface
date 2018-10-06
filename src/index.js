@@ -12,14 +12,14 @@ const algoliasearch = require('algoliasearch');
 const dotenv = require('dotenv');
 
 // load values from the .env file in this directory into process.env
-dotenv.load();
+dotenv.load()
 
 // configure algolia
 const algolia = algoliasearch(
-    process.env.ALGOLIA_APP_ID,
-    process.env.ALGOLIA_API_KEY
+    "SDWS1O62WD",
+    "072fe8783a3d8179d5700ab709688e98"
 );
-const index = algolia.initIndex(process.env.ALGOLIA_INDEX_NAME);
+const index = algolia.initIndex("contacts");
 
 // Adding a few contacts
 Promise.all([
