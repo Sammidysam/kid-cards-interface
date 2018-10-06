@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import base from "./config"
+
 import CardStack from "./CardStack"
 
 class App extends Component {
@@ -19,12 +21,11 @@ class App extends Component {
 	}
 
 	componentDidMount () {
-		let url = "https://274601f9.ngrok.io"
-
-		fetch(url).then(resp => resp.json())
-				  .then(data => {
-					  this.setState(data);
-				  });
+		base.bindToState("/doctors", {
+			context: this,
+			asArray: true,
+			state: "doctors"
+		})
 	}
 }
 

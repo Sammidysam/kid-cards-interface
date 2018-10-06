@@ -18,4 +18,8 @@
 
 npm-debug.log*
 yarn-debug.log*
+
+
+src/config.js
+
 yarn-error.log*
