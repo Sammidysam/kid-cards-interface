@@ -32,10 +32,8 @@ Promise.all([
         city: 'Paris'
     })]).then(function () {
         console.log("Contacts added to Firebase");
-        process.exit(0);
     }).catch(function (error) {
         console.error("Error adding contacts to Firebase", error);
-        process.exit(1);
     });
 
 // If you want your app to work offline and load faster, you can change
