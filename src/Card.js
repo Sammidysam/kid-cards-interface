@@ -26,7 +26,7 @@ class Card extends Component {
 			<div className="card {this.color()} mb-3">
 			<div className="card-body">
 			<p className="card-text">{this.props.body}</p>
-                    <p className="card-text"><small className="text-muted">{this.props.creator.name}+"("+{this.props.creator.role}+") "+<Moment fromNow>{this.props.date}</Moment> </small></p>
+                    <p className="card-text"><small className="text-muted">{this.props.creator.name}({this.props.creator.role}) <Moment fromNow>{this.props.date}</Moment> </small></p>
 			</div>
 			</div>
         );
