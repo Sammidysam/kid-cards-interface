@@ -11,14 +11,17 @@ class App extends Component {
 
         this.state = {notes: [], value: ''};
     }
-    handleChange(event) {
+    handleChange = (event) => {
         this.setState({ value: event.target.value });
     }
 
-    handleSubmit(event) {
-        tools.index.search({ query: this.state.value }, function (error, content) {
+    handleSubmit = (event) => {
+		var that = this;
+
+        tools.index.search({ query: this.state.value, distinct: true }, function (error, content) {
+			console.log(content.hits);
             if (error) { alert(error.message); }
-            this.setState({ notes: content.hits});
+            that.setState({ notes: content.hits});
         });
     }
 
