@@ -32,11 +32,34 @@ Promise.all([
         city: 'Paris'
     })]).then(function () {
         console.log("Contacts added to Firebase");
-        process.exit(0);
     }).catch(function (error) {
         console.error("Error adding contacts to Firebase", error);
-        process.exit(1);
     });
+
+// Get all contacts from Firebase
+database.ref('/contacts').once('value', contacts => {
+    // Build an array of all records to push to Algolia
+    const records = [];
+    contacts.forEach(contact => {
+        // get the key and data from the snapshot
+        const childKey = contact.key;
+        const childData = contact.val();
+        // We set the Algolia objectID as the Firebase .key
+        childData.objectID = childKey;
+        // Add object for indexing
+        records.push(childData);
+    });
+
+    // Add or update new objects
+    index
+        .saveObjects(records)
+        .then(() => {
+            console.log('Contacts imported into Algolia');
+        })
+        .catch(error => {
+            console.error('Error when importing contact into Algolia', error);
+        });
+});
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
