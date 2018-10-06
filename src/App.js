@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import base from "./config"
+import tools from "./config"
 
 import CardStack from "./CardStack"
 
@@ -22,7 +22,7 @@ class App extends Component {
 	}
 
 	componentDidMount () {
-		base.bindToState("/doctors", {
+		tools.base.bindToState("/doctors", {
 			context: this,
 			asArray: true,
 			state: "doctors"

@@ -4,20 +4,15 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import tools from "./config"
+
 
 ReactDOM.render(<App />, document.getElementById('root'));
 const algoliasearch = require('algoliasearch');
 const dotenv = require('dotenv');
-const firebase = require('firebase');
 
 // load values from the .env file in this directory into process.env
 dotenv.load();
-
-// configure firebase
-firebase.initializeApp({
-    databaseURL: process.env.FIREBASE_DATABASE_URL,
-});
-const database = firebase.database();
 
 // configure algolia
 const algolia = algoliasearch(
@@ -28,11 +23,11 @@ const index = algolia.initIndex(process.env.ALGOLIA_INDEX_NAME);
 
 // Adding a few contacts
 Promise.all([
-    database.ref('/contacts').push({
+    tools.database.ref('/contacts').push({
         name: 'Josh',
         city: 'San Francisco'
     }),
-    database.ref('/contacts').push({
+    tools.database.ref('/contacts').push({
         name: 'Tim',
         city: 'Paris'
     })]).then(function () {
