@@ -1,21 +1,21 @@
-'use strict';
+import React, { Component } from "react"
 
-const e = React.createElement;
-
-class CardStack extends React.Component {
+class Card extends Component {
     constructor(props) {
         super(props);
         this.state = { liked: false };
     }
 
     render() {
-        return e(
-            'div',
-            { onClick: () => this.setState({ liked: true }), class: "card", style: "width: 18rem;" },
-            'Yo'
+        return (
+			<div className="card border-dark mb-3">
+			<div className="card-body">
+			<p className="card-text">{this.props.body}</p>
+			<p className="card-text"><small className="text-muted">{this.props.date}</small></p>
+			</div>
+			</div>
         );
     }
 }
 
-const domContainer = document.querySelector('#like_button_container');
-ReactDOM.render(e(LikeButton), domContainer);
+export default Card;
