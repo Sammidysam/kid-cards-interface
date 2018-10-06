@@ -32,7 +32,7 @@ class App extends Component {
                         <button className="btn btn-outline-secondary" type="button">Analyze</button>
                     </div>
                 </div>
-                <CardStack cards={(this.state.notes.length >0 ? this.state.notes : (this.state.doctors && this.state.doctors[0].patients[0].notes)} />
+            <CardStack cards={(this.state.notes.length > 0 ? this.state.notes : (this.state.doctors && this.state.doctors[0].patients[0].notes))} />
             </div>
         );
     }
